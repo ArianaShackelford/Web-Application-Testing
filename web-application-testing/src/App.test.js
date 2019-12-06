@@ -1,20 +1,28 @@
-// import React from 'react';
-// import { render } from '@testing-library/react';
-// import App from './App';
-
-// test('renders learn react link', () => {
-//   const { getByText } = render(<App />);
-//   const linkElement = getByText(/learn react/i);
-//   expect(linkElement).toBeInTheDocument();
-// });
-
 import React from 'react';
 import { render } from '@testing-library/react';
+import {Display} from './components/Display';
 
-import {Dashboard} from './Dashboard';
+import { Dashboard } from './components/Dashboard';
 
-test('renders dashboard in app', () => {
-  const { getByText } = render(<Dashboard />);
-  const linkElement = getByText(/strike/i);
-  expect(linkElement).toBeInTheDocument();
+
+test('check to see if strike and ball are displayed in Display',()=>{
+    const {getByText} = render(<Display/>);
+    const strikecheck = getByText(/strikes/i);
+    const ballcheck = getByText(/ball/i);
+
+    expect(strikecheck).toBeInTheDocument();
+    expect(ballcheck).toBeInTheDocument();
+});
+
+test('check to see if dashboard buttons display',() =>{
+  const {getByText} = render(<Dashboard/>);
+  const strikebtncheck = getByText(/strike/i);
+  const ballbtncheck = getByText(/ball/i);
+  const foulbtncheck = getByText(/foul/i);
+  const hitbtncheck = getByText(/hit/i);
+
+  expect(strikebtncheck).toBeInTheDocument();
+  expect(ballbtncheck).toBeInTheDocument();
+  expect(foulbtncheck).toBeInTheDocument();
+  expect(hitbtncheck).toBeInTheDocument();
 });
